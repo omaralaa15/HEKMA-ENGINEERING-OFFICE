@@ -1,830 +1,1337 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HEKMA ENGINEERING OFFICE</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap');
-        
-        :root {
-            --primary-color: #1a5276;
-            --secondary-color: #2980b9;
-            --accent-color: #e74c3c;
-            --light-color: #f8f9fa;
-            --dark-color: #343a40;
-            --success-color: #28a745;
-            --gold-color: #FFD700;
-        }
-        
-        * {
-            box-sizing: border-box;
-            font-family: 'Tajawal', sans-serif;
-        }
-        
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #f5f5f5;
-            color: #333;
-        }
-        
+      @import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap");
+
+      :root {
+        --primary-color: #1a5276;
+        --secondary-color: #2980b9;
+        --accent-color: #e74c3c;
+        --light-color: #f8f9fa;
+        --dark-color: #343a40;
+        --success-color: #28a745;
+        --gold-color: #ffd700;
+      }
+
+      * {
+        box-sizing: border-box;
+        font-family: "Tajawal", sans-serif;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        background: url("background.jpg") no-repeat center center fixed;
+        background-size: cover;
+        color: #333;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        background: #ffffff;
+        min-height: 100vh;
+        border-radius: 10px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      }
+
+      header {
+        text-align: center !important;
+        margin-bottom: 40px;
+        padding-bottom: 20px;
+        position: relative;
+      }
+
+      .logo-container {
+        display: flex;
+        justify-content: center !important;
+        align-items: center;
+        gap: 30px;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+      }
+
+      .logo {
+        max-width: 180px;
+        height: auto;
+      }
+
+      .header-text,
+      h1,
+      .header-arabic,
+      .header-subtitle {
+        display: none !important;
+      }
+
+      .form-section {
+        background-color: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        margin-bottom: 40px;
+        position: relative;
+        overflow: visible;
+        border: 1px solid #e9ecef;
+        min-height: 200px;
+      }
+
+      .form-section:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 5px;
+        height: 100%;
+        background: linear-gradient(
+          to bottom,
+          var(--primary-color),
+          var(--secondary-color)
+        );
+      }
+
+      h2 {
+        color: var(--primary-color);
+        border-bottom: 1px solid #eee;
+        padding-bottom: 10px;
+        margin-top: 0;
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+      }
+
+      h2 i {
+        margin-left: 10px;
+        color: var(--secondary-color);
+      }
+
+      .form-row {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+        gap: 20px;
+      }
+
+      .form-group {
+        flex: 1;
+        min-width: 200px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: var(--dark-color);
+      }
+
+      input,
+      select,
+      textarea {
+        width: 100%;
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        font-size: 16px;
+        transition: all 0.3s;
+      }
+
+      input:focus,
+      select:focus,
+      textarea:focus {
+        border-color: var(--secondary-color);
+        box-shadow: 0 0 0 3px rgba(41, 128, 185, 0.2);
+        outline: none;
+      }
+
+      textarea {
+        min-height: 120px;
+        resize: vertical;
+      }
+
+      .items-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 25px 0;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        border: 1px solid #dee2e6;
+        background: white;
+      }
+
+      .items-table th {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 12px 15px;
+        text-align: left;
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+
+      .items-table td {
+        padding: 12px 15px;
+        border-bottom: 1px solid #dee2e6;
+        vertical-align: middle;
+      }
+
+      .items-table tr:nth-child(even) {
+        background-color: #f8f9fa;
+      }
+
+      .items-table tr:hover {
+        background-color: #e9ecef;
+      }
+
+      .action-buttons {
+        display: flex;
+        gap: 10px;
+      }
+
+      .btn {
+        padding: 8px 15px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 500;
+        border: none;
+        transition: all 0.3s;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .btn i {
+        margin-left: 5px;
+      }
+
+      .btn-primary {
+        background-color: var(--primary-color);
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background-color: #154360;
+        transform: translateY(-2px);
+      }
+
+      .btn-success {
+        background-color: var(--success-color);
+        color: white;
+      }
+
+      .btn-success:hover {
+        background-color: #218838;
+        transform: translateY(-2px);
+      }
+
+      .btn-danger {
+        background-color: var(--accent-color);
+        color: white;
+      }
+
+      .btn-danger:hover {
+        background-color: #c0392b;
+        transform: translateY(-2px);
+      }
+
+      .total-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 25px;
+        padding-top: 20px;
+        border-top: 2px solid var(--primary-color);
+      }
+
+      .total-section {
+        text-align: left;
+        font-size: 1.2rem;
+        font-weight: bold;
+        padding: 15px;
+        background-color: #f8f9fa;
+        border-radius: 6px;
+        border-left: 4px solid var(--primary-color);
+        border: 1px solid #dee2e6;
+        flex: 1;
+        margin-right: 20px;
+      }
+
+      .total-amount {
+        color: var(--primary-color);
+        font-size: 1.4rem;
+      }
+
+      .stamp-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-width: 200px;
+      }
+
+      .stamp {
+        max-width: 180px;
+        filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.3));
+        margin-bottom: 10px;
+      }
+
+      .stamp-label {
+        font-size: 0.9rem;
+        color: var(--dark-color);
+        font-weight: 500;
+      }
+
+      .submit-btn {
+        background: linear-gradient(
+          to right,
+          var(--primary-color),
+          var(--secondary-color)
+        );
+        color: white;
+        padding: 12px 30px;
+        border-radius: 30px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 600;
+        margin-top: 25px;
+        border: none;
+        transition: all 0.3s;
+        box-shadow: 0 4px 10px rgba(26, 82, 118, 0.2);
+        display: inline-flex;
+        align-items: center;
+      }
+
+      .submit-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 15px rgba(26, 82, 118, 0.3);
+      }
+
+      .submit-btn i {
+        margin-left: 8px;
+      }
+
+      footer {
+        text-align: center;
+        margin-top: 50px;
+        padding: 30px 20px;
+        background-color: var(--dark-color);
+        color: white;
+        border-radius: 10px 10px 0 0;
+      }
+
+      .footer-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .generated-info {
+        background-color: rgba(255, 255, 255, 0.1);
+        padding: 10px 20px;
+        border-radius: 30px;
+        margin: 15px 0;
+        font-size: 0.9rem;
+      }
+
+      .social-links {
+        margin-top: 20px;
+      }
+
+      .social-links a {
+        color: white;
+        margin: 0 10px;
+        font-size: 1.2rem;
+        transition: all 0.3s;
+      }
+
+      .social-links a:hover {
+        color: var(--secondary-color);
+        transform: translateY(-3px);
+      }
+
+      @media (max-width: 768px) {
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
+          padding: 15px;
         }
-        
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-            padding-bottom: 20px;
-            position: relative;
+
+        .form-section {
+          padding: 20px;
         }
-        
+
         .logo-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 30px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
+          flex-direction: column;
+          gap: 15px;
         }
-        
-        .logo {
-            max-width: 180px;
-            height: auto;
-        }
-        
-        .header-text {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        
+
         h1 {
-            color: var(--primary-color);
-            margin: 0;
-            font-size: 2.5rem;
-            letter-spacing: 1px;
-            position: relative;
-            display: inline-block;
+          font-size: 2rem;
         }
-        
-        .stars {
-            color: var(--gold-color);
-            font-size: 1.5rem;
-            margin: 10px 0;
-            letter-spacing: 5px;
-        }
-        
+
         .header-arabic {
-            font-size: 1.8rem;
-            color: var(--dark-color);
-            margin: 10px 0;
-            font-weight: 700;
+          font-size: 1.5rem;
         }
-        
-        .header-subtitle {
-            color: var(--secondary-color);
-            font-size: 1.1rem;
-            letter-spacing: 1px;
-        }
-        
-        .form-section {
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            margin-bottom: 40px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .form-section:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 5px;
-            height: 100%;
-            background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
-        }
-        
-        h2 {
-            color: var(--primary-color);
-            border-bottom: 1px solid #eee;
-            padding-bottom: 10px;
-            margin-top: 0;
-            font-size: 1.5rem;
-            display: flex;
-            align-items: center;
-        }
-        
-        h2 i {
-            margin-left: 10px;
-            color: var(--secondary-color);
-        }
-        
+
         .form-row {
-            display: flex;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-            gap: 20px;
+          flex-direction: column;
+          gap: 15px;
         }
-        
-        .form-group {
-            flex: 1;
-            min-width: 200px;
-        }
-        
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: var(--dark-color);
-        }
-        
-        input, select, textarea {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            font-size: 16px;
-            transition: all 0.3s;
-        }
-        
-        input:focus, select:focus, textarea:focus {
-            border-color: var(--secondary-color);
-            box-shadow: 0 0 0 3px rgba(41, 128, 185, 0.2);
-            outline: none;
-        }
-        
-        textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
-        
+
         .items-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 25px 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+          font-size: 14px;
         }
-        
-        .items-table th {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 12px 15px;
-            text-align: right;
-            font-weight: 500;
-        }
-        
+
+        .items-table th,
         .items-table td {
-            padding: 12px 15px;
-            border-bottom: 1px solid #eee;
-            vertical-align: middle;
+          padding: 8px 10px;
         }
-        
-        .items-table tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-        
-        .items-table tr:hover {
-            background-color: #f1f1f1;
-        }
-        
-        .action-buttons {
-            display: flex;
-            gap: 10px;
-        }
-        
-        .btn {
-            padding: 8px 15px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 500;
-            border: none;
-            transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .btn i {
-            margin-left: 5px;
-        }
-        
-        .btn-primary {
-            background-color: var(--primary-color);
-            color: white;
-        }
-        
-        .btn-primary:hover {
-            background-color: #154360;
-            transform: translateY(-2px);
-        }
-        
-        .btn-success {
-            background-color: var(--success-color);
-            color: white;
-        }
-        
-        .btn-success:hover {
-            background-color: #218838;
-            transform: translateY(-2px);
-        }
-        
-        .btn-danger {
-            background-color: var(--accent-color);
-            color: white;
-        }
-        
-        .btn-danger:hover {
-            background-color: #c0392b;
-            transform: translateY(-2px);
-        }
-        
+
         .total-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 25px;
+          flex-direction: column;
         }
-        
+
         .total-section {
-            text-align: left;
-            font-size: 1.2rem;
-            font-weight: bold;
-            padding: 15px;
-            background-color: #f8f9fa;
-            border-radius: 6px;
-            border-left: 4px solid var(--primary-color);
-            flex: 1;
-            margin-right: 20px;
+          margin-right: 0;
+          margin-bottom: 20px;
+          width: 100%;
         }
-        
-        .total-amount {
-            color: var(--primary-color);
-            font-size: 1.4rem;
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          padding: 5px;
         }
-        
-        .stamp-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-width: 200px;
-        }
-        
-        .stamp {
-            max-width: 180px;
-            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.3));
-            margin-bottom: 10px;
-        }
-        
-        .stamp-label {
-            font-size: 0.9rem;
-            color: var(--dark-color);
-            font-weight: 500;
-        }
-        
-        .submit-btn {
-            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 12px 30px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 600;
-            margin-top: 25px;
-            border: none;
-            transition: all 0.3s;
-            box-shadow: 0 4px 10px rgba(26, 82, 118, 0.2);
-            display: inline-flex;
-            align-items: center;
-        }
-        
-        .submit-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(26, 82, 118, 0.3);
-        }
-        
-        .submit-btn i {
-            margin-left: 8px;
-        }
-        
-        footer {
-            text-align: center;
-            margin-top: 50px;
-            padding: 30px 20px;
-            background-color: var(--dark-color);
-            color: white;
-            border-radius: 10px 10px 0 0;
-        }
-        
-        .footer-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        .generated-info {
-            background-color: rgba(255,255,255,0.1);
-            padding: 10px 20px;
-            border-radius: 30px;
-            margin: 15px 0;
-            font-size: 0.9rem;
-        }
-        
-        .social-links {
-            margin-top: 20px;
-        }
-        
-        .social-links a {
-            color: white;
-            margin: 0 10px;
-            font-size: 1.2rem;
-            transition: all 0.3s;
-        }
-        
-        .social-links a:hover {
-            color: var(--secondary-color);
-            transform: translateY(-3px);
-        }
-        
-        @media (max-width: 768px) {
-            .container {
-                padding: 15px;
-            }
-            
-            .form-section {
-                padding: 20px;
-            }
-            
-            .logo-container {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            h1 {
-                font-size: 2rem;
-            }
-            
-            .header-arabic {
-                font-size: 1.5rem;
-            }
-            
-            .form-row {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .items-table {
-                font-size: 14px;
-            }
-            
-            .items-table th, .items-table td {
-                padding: 8px 10px;
-            }
-            
-            .total-container {
-                flex-direction: column;
-            }
-            
-            .total-section {
-                margin-right: 0;
-                margin-bottom: 20px;
-                width: 100%;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .container {
-                padding: 5px;
-            }
-            .form-section {
-                padding: 10px;
-            }
-            .logo-container {
-                flex-direction: column;
-                gap: 10px;
-            }
-            h1 {
-                font-size: 1.3rem;
-            }
-            .header-arabic {
-                font-size: 1.1rem;
-            }
-            .form-row {
-                flex-direction: column;
-                gap: 8px;
-            }
-            .form-group {
-                min-width: 100px;
-            }
-            .items-table, .items-table th, .items-table td {
-                font-size: 12px;
-                padding: 4px 5px;
-            }
-            .items-table th, .items-table td {
-                white-space: normal;
-            }
-            .total-section {
-                font-size: 1rem;
-                padding: 8px;
-            }
-            .stamp-section {
-                min-width: 100px;
-            }
-            .stamp {
-                max-width: 90px;
-            }
-            .submit-btn, .btn {
-                font-size: 12px;
-                padding: 8px 10px;
-            }
-            .footer-content {
-                font-size: 0.8rem;
-            }
-            .generated-info {
-                font-size: 0.7rem;
-                padding: 5px 10px;
-            }
-            #image-preview img {
-                max-width: 70px !important;
-                max-height: 70px !important;
-            }
-        }
-        
-        /* Animation */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
         .form-section {
-            animation: fadeIn 0.6s ease-out forwards;
+          padding: 10px;
         }
-        
-        /* Print styles */
-        @media print {
-            body {
-                background-color: white;
-            }
-            
-            .container {
-                padding: 0;
-                max-width: 100%;
-            }
-            
-            .form-section {
-                box-shadow: none;
-                border-radius: 0;
-                page-break-inside: avoid;
-            }
-            
-            .submit-btn, .add-item, .remove-item {
-                display: none !important;
-            }
+        .logo-container {
+          flex-direction: column;
+          gap: 10px;
         }
+        h1 {
+          font-size: 1.3rem;
+        }
+        .header-arabic {
+          font-size: 1.1rem;
+        }
+        .form-row {
+          flex-direction: column;
+          gap: 8px;
+        }
+        .form-group {
+          min-width: 100px;
+        }
+        .items-table,
+        .items-table th,
+        .items-table td {
+          font-size: 12px;
+          padding: 4px 5px;
+        }
+        .items-table th,
+        .items-table td {
+          white-space: normal;
+        }
+        .total-section {
+          font-size: 1rem;
+          padding: 8px;
+        }
+        .stamp-section {
+          min-width: 100px;
+        }
+        .stamp {
+          max-width: 90px;
+        }
+        .submit-btn,
+        .btn {
+          font-size: 12px;
+          padding: 8px 10px;
+        }
+        .footer-content {
+          font-size: 0.8rem;
+        }
+        .generated-info {
+          font-size: 0.7rem;
+          padding: 5px 10px;
+        }
+        .desc-img-preview img {
+          max-width: 70px !important;
+          max-height: 70px !important;
+        }
+      }
+
+      /* Animation */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .form-section {
+        animation: fadeIn 0.6s ease-out forwards;
+      }
+
+      /* Print styles - Optimized for professional PDF */
+      @media print {
+        @page {
+          margin: 0.5in;
+          size: A4;
+        }
+
+        * {
+          -webkit-print-color-adjust: exact !important;
+          color-adjust: exact !important;
+          print-color-adjust: exact !important;
+          font-family: Arial, Helvetica, sans-serif !important;
+          color: #000 !important;
+          background: white !important;
+        }
+
+        body {
+          background: white !important;
+          margin: 0 !important;
+          padding: 0 !important;
+          line-height: 1.4 !important;
+        }
+
+        .container {
+          padding: 15px !important;
+          max-width: 100% !important;
+          margin: 0 !important;
+          background: white !important;
+          min-height: auto !important;
+          border-radius: 0 !important;
+          box-shadow: none !important;
+        }
+
+        header {
+          margin: 0 0 15px 0 !important;
+          padding: 10px 0 !important;
+          border-bottom: 2px solid #1a5276 !important;
+          background: #1a5276 !important;
+          color: white !important;
+          text-align: center !important;
+        }
+
+        .logo-container {
+          justify-content: center !important;
+          margin: 0 !important;
+          background: white !important;
+        }
+
+        .logo {
+          max-width: 80px !important;
+          filter: none !important;
+        }
+
+        .form-section {
+          box-shadow: none !important;
+          border-radius: 0 !important;
+          page-break-inside: auto !important;
+          page-break-after: auto !important;
+          margin-bottom: 15px !important;
+          padding: 15px !important;
+          border: 1px solid #ccc !important;
+          background: white !important;
+          position: relative !important;
+          min-height: 100px !important;
+        }
+
+        .form-section:before {
+          display: none !important;
+        }
+
+        h2 {
+          font-size: 1.2rem !important;
+          margin: 0 0 12px 0 !important;
+          color: #1a5276 !important;
+          border-bottom: 1px solid #1a5276 !important;
+          padding-bottom: 6px !important;
+          font-weight: bold !important;
+          text-transform: uppercase !important;
+          letter-spacing: 0.5px !important;
+        }
+
+        .form-row {
+          margin-bottom: 10px !important;
+          display: flex !important;
+          gap: 12px !important;
+        }
+
+        .form-group {
+          margin-bottom: 8px !important;
+          flex: 1 !important;
+          background: white !important;
+        }
+
+        label {
+          font-weight: bold !important;
+          font-size: 0.8rem !important;
+          margin-bottom: 3px !important;
+          color: #000 !important;
+          text-transform: uppercase !important;
+          letter-spacing: 0.3px !important;
+        }
+
+        input,
+        select,
+        textarea {
+          padding: 6px 8px !important;
+          font-size: 0.85rem !important;
+          border: 1px solid #999 !important;
+          border-radius: 3px !important;
+          width: 100% !important;
+          box-sizing: border-box !important;
+          background: white !important;
+          color: #000 !important;
+        }
+
+        .items-table {
+          font-size: 0.7rem !important;
+          margin: 12px 0 !important;
+          border: 1px solid #1a5276 !important;
+          border-collapse: collapse !important;
+          width: 100% !important;
+          page-break-inside: auto !important;
+          page-break-after: auto !important;
+          background: white !important;
+        }
+
+        .items-table th {
+          background: #1a5276 !important;
+          color: white !important;
+          padding: 8px 6px !important;
+          font-weight: bold !important;
+          font-size: 0.75rem !important;
+          text-align: left !important;
+          border: 1px solid #1a5276 !important;
+          text-transform: uppercase !important;
+          letter-spacing: 0.3px !important;
+        }
+
+        .items-table td {
+          padding: 6px !important;
+          border: 1px solid #ccc !important;
+          vertical-align: middle !important;
+          background: white !important;
+        }
+
+        .items-table td:first-child {
+          max-width: 200px !important;
+          white-space: normal !important;
+          word-wrap: break-word !important;
+        }
+
+        .items-table tr:nth-child(even) {
+          background-color: #f8f9fa !important;
+        }
+
+        .items-table tr {
+          page-break-inside: avoid !important;
+          page-break-after: auto !important;
+        }
+
+        .total-container {
+          margin-top: 15px !important;
+          border-top: 2px solid #1a5276 !important;
+          padding-top: 12px !important;
+          display: flex !important;
+          justify-content: space-between !important;
+          align-items: center !important;
+          background: white !important;
+        }
+
+        .total-section {
+          font-size: 1.1rem !important;
+          padding: 12px !important;
+          background: #f8f9fa !important;
+          border: 1px solid #1a5276 !important;
+          border-radius: 4px !important;
+          flex: 1 !important;
+          margin-right: 15px !important;
+          font-weight: bold !important;
+        }
+
+        .total-amount {
+          font-size: 1.3rem !important;
+          font-weight: bold !important;
+          color: #1a5276 !important;
+        }
+
+        .stamp-section {
+          min-width: 100px !important;
+          text-align: center !important;
+          background: white !important;
+        }
+
+        .stamp {
+          max-width: 80px !important;
+          filter: none !important;
+        }
+
+        .stamp-label {
+          font-size: 0.7rem !important;
+          font-weight: bold !important;
+          margin-top: 4px !important;
+          color: #000 !important;
+        }
+
+        .currency-select {
+          border: 1px solid #999 !important;
+          padding: 3px 6px !important;
+          font-size: 0.85rem !important;
+          border-radius: 3px !important;
+          margin-left: 8px !important;
+          background: white !important;
+        }
+
+        footer {
+          margin-top: 20px !important;
+          padding: 15px !important;
+          background: #343a40 !important;
+          color: white !important;
+          border-radius: 0 !important;
+          text-align: center !important;
+        }
+
+        .footer-content {
+          text-align: center !important;
+          background: #343a40 !important;
+        }
+
+        .generated-info {
+          background: rgba(255, 255, 255, 0.1) !important;
+          padding: 8px 12px !important;
+          border-radius: 3px !important;
+          margin: 8px 0 !important;
+          font-size: 0.75rem !important;
+          font-weight: bold !important;
+          border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        }
+
+        .social-links {
+          margin-top: 12px !important;
+        }
+
+        .social-links a {
+          color: white !important;
+          margin: 0 8px !important;
+          font-size: 1rem !important;
+          text-decoration: none !important;
+        }
+
+        /* Hide elements that shouldn't appear in PDF */
+        .submit-btn,
+        .add-item,
+        .remove-item,
+        .duplicate-item,
+        .btn-icon,
+        .action-buttons,
+        .desc-img-upload input[type="file"] {
+          display: none !important;
+        }
+
+        /* Ensure images print properly */
+        img {
+          max-width: 100% !important;
+          height: auto !important;
+          display: block !important;
+        }
+      }
+
+      .btn-icon {
+        padding: 10px 12px;
+        font-size: 1.2rem;
+        min-width: 0;
+      }
+      .desc-img-upload {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .desc-img-preview img {
+        max-width: 40px;
+        max-height: 40px;
+        border-radius: 4px;
+        margin-left: 5px;
+      }
+      .currency-select {
+        margin-left: 10px;
+        padding: 6px 12px;
+        border-radius: 6px;
+        border: 1px solid #ddd;
+        font-size: 1rem;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <header>
-            <div class="logo-container">
-                <!-- Replace with your actual logo -->
-                <img src="logo-removebg-preview.png" alt="HEKMA ENGINEERING OFFICE Logo" class="logo">
-                <div class="header-text">
-                    <h1>HEKMA ENGINEERING OFFICE</h1>
-                    <div class="stars">★★★</div>
-                    <div class="header-arabic">الحكمة الهندسية</div>
-                    <div class="header-subtitle">Professional Engineering Solutions</div>
-                </div>
+      <header>
+        <div class="logo-container">
+          <img
+            src="logo-removebg-preview.png"
+            alt="HEKMA ENGINEERING OFFICE Logo"
+            class="logo"
+          />
+        </div>
+      </header>
+      <form id="priceRequestForm">
+        <div class="form-section">
+          <h2><i class="fas fa-user-tie"></i> Client Information</h2>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="company">Company:</label>
+              <select id="company" name="company" required>
+                <option value="Clinic">Clinic</option>
+                <option value="Hospital">Hospital</option>
+                <option value="Company">Company</option>
+              </select>
             </div>
-        </header>
-        
-        <form id="priceRequestForm">
-            <div class="form-section">
-                <h2><i class="fas fa-user-tie"></i> CLIENT INFORMATION</h2>
-                
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="company">Company:</label>
-                        <input type="text" id="company" name="company" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="client-name">Client Name:</label>
-                        <input type="text" id="client-name" name="client-name" required>
-                    </div>
-                </div>
-                
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="address">Address:</label>
-                        <input type="text" id="address" name="address" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Phone:</label>
-                        <input type="tel" id="phone" name="phone" required>
-                    </div>
-                </div>
-                
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="date">Date:</label>
-                        <input type="date" id="date" name="date" required>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="reference">Reference Number:</label>
-                    <input type="text" id="reference" name="reference" required>
-                </div>
+            <div class="form-group">
+              <label for="client-name">Client Name:</label>
+              <input type="text" id="client-name" name="client-name" required />
             </div>
-            
-            <div class="form-section">
-                <h2><i class="fas fa-file-invoice-dollar"></i> PRICE REQUEST</h2>
-                
-                <table class="items-table">
-                    <thead>
-                        <tr>
-                            <th>Description</th>
-                            <th>Quantity</th>
-                            <th>Unit Price ($)</th>
-                            <th>Total ($)</th>
-                            <th>Made In</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody id="items-container">
-                        <tr>
-                            <td><input type="text" name="item-desc[]" required></td>
-                            <td><input type="number" name="item-qty[]" min="1" value="1" required></td>
-                            <td><input type="number" name="item-price[]" min="0" step="0.01" required></td>
-                            <td class="item-total">0.00</td>
-                            <td>
-                                <select name="item-madein[]" required>
-                                    <option value="" disabled selected>Select Country</option>
-                                    <option value="USA">USA</option>
-                                    <option value="China">China</option>
-                                    <option value="Germany">Germany</option>
-                                    <option value="Japan">Japan</option>
-                                    <option value="UK">UK</option>
-                                    <option value="France">France</option>
-                                    <option value="Italy">Italy</option>
-                                    <option value="India">India</option>
-                                    <option value="Brazil">Brazil</option>
-                                    <option value="Canada">Canada</option>
-                                </select>
-                            </td>
-                            <td>
-                                <div class="action-buttons">
-                                    <button type="button" class="btn btn-danger remove-item"><i class="fas fa-trash"></i></button>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                
-                <button type="button" class="btn btn-success" id="add-item"><i class="fas fa-plus"></i> Add Item</button>
-                
-                <div class="total-container">
-                    <div class="total-section">
-                        <p>GRAND TOTAL: $<span id="grand-total" class="total-amount">0.00</span></p>
-                    </div>
-                    
-                    <div class="stamp-section">
-                        <!-- Replace with your actual stamp -->
-                        <img src="heo-removebg-preview.png" alt="Official Stamp" class="stamp">
-                        <div class="stamp-label">Official Stamp</div>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="notes">Notes:</label>
-                    <textarea id="notes" name="notes">This is a professional price request document. Please review all items and provide your best quote.</textarea>
-                </div>
-                
-                <div class="form-group">
-                    <label for="images">Upload Images:</label>
-                    <input type="file" id="images" name="images[]" multiple accept="image/*">
-                    <div id="image-preview" style="margin-top: 15px; display: flex; flex-wrap: wrap; gap: 10px;"></div>
-                </div>
-                
-                <button type="button" class="btn btn-primary" id="download-pdf" style="margin-left:10px;"><i class="fas fa-file-pdf"></i> Download PDF</button>
-                <button type="button" class="btn btn-primary" id="download-excel"><i class="fas fa-file-excel"></i> Download Excel Sheet</button>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="address">Address:</label>
+              <input type="text" id="address" name="address" required />
             </div>
-        </form>
-        
-        <footer>
-            <div class="footer-content">
-                <p>HEKMA ENGINEERING OFFICE - Professional Engineering Solutions</p>
-                <div class="generated-info">
-                    Generated on <span id="current-date"></span> | Reference: <span id="reference-display">PR-XXXXXX</span>
-                </div>
-                
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#"><i class="fab fa-whatsapp"></i></a>
-                    <a href="#"><i class="fas fa-envelope"></i></a>
-                </div>
+            <div class="form-group">
+              <label for="phone">Phone:</label>
+              <input type="tel" id="phone" name="phone" required />
             </div>
-        </footer>
-    </div>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-    <script>
-        // Add current date
-        const now = new Date();
-        document.getElementById('current-date').textContent = now.toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-        });
-        
-        // Set default date to today
-        document.getElementById('date').valueAsDate = now;
-        
-        // Generate random reference number if empty
-        function generateReference() {
-            const refInput = document.getElementById('reference');
-            if (!refInput.value) {
-                const randomNum = Math.floor(100000 + Math.random() * 900000);
-                refInput.value = `PR-${randomNum}`;
-            }
-        }
-        
-        // Add item row
-        document.getElementById('add-item').addEventListener('click', function() {
-            const container = document.getElementById('items-container');
-            const newRow = document.createElement('tr');
-            newRow.innerHTML = `
-                <td><input type="text" name="item-desc[]" required></td>
-                <td><input type="number" name="item-qty[]" min="1" value="1" required></td>
-                <td><input type="number" name="item-price[]" min="0" step="0.01" required></td>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="date">Date:</label>
+              <input type="date" id="date" name="date" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="reference">Reference Number:</label>
+            <input type="text" id="reference" name="reference" required />
+          </div>
+        </div>
+        <div class="form-section">
+          <h2><i class="fas fa-file-invoice-dollar"></i> Price Request</h2>
+
+          <table class="items-table">
+            <thead>
+              <tr>
+                <th>Description</th>
+                <th>Image</th>
+                <th>Quantity</th>
+                <th>Unit Price</th>
+                <th>Total</th>
+                <th>Made In</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="items-container">
+              <tr>
+                <td>
+                  <input type="text" name="item-desc[]" required />
+                </td>
+                <td>
+                  <div class="desc-img-upload">
+                    <input
+                      type="file"
+                      name="item-img[]"
+                      accept="image/*"
+                      class="desc-img-input"
+                    />
+                    <div class="desc-img-preview"></div>
+                  </div>
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    name="item-qty[]"
+                    min="1"
+                    value="1"
+                    required
+                  />
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    name="item-price[]"
+                    min="0"
+                    step="0.01"
+                    required
+                  />
+                </td>
                 <td class="item-total">0.00</td>
                 <td>
-                    <select name="item-madein[]" required>
-                        <option value="" disabled selected>Select Country</option>
-                        <option value="USA">USA</option>
-                        <option value="China">China</option>
-                        <option value="Germany">Germany</option>
-                        <option value="Japan">Japan</option>
-                        <option value="UK">UK</option>
-                        <option value="France">France</option>
-                        <option value="Italy">Italy</option>
-                        <option value="India">India</option>
-                        <option value="Brazil">Brazil</option>
-                        <option value="Canada">Canada</option>
-                    </select>
+                  <select name="item-madein[]" required>
+                    <option value="" disabled selected>Select Country</option>
+                    <option value="USA">USA</option>
+                    <option value="China">China</option>
+                    <option value="Germany">Germany</option>
+                    <option value="Japan">Japan</option>
+                    <option value="UK">UK</option>
+                    <option value="France">France</option>
+                    <option value="Italy">Italy</option>
+                    <option value="India">India</option>
+                    <option value="Brazil">Brazil</option>
+                    <option value="Canada">Canada</option>
+                  </select>
                 </td>
                 <td>
-                    <div class="action-buttons">
-                        <button type="button" class="btn btn-danger remove-item"><i class="fas fa-trash"></i></button>
-                    </div>
+                  <div class="action-buttons">
+                    <button type="button" class="btn btn-danger remove-item">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-primary duplicate-item"
+                    >
+                      <i class="fas fa-copy"></i>
+                    </button>
+                  </div>
                 </td>
-            `;
-            container.appendChild(newRow);
-            
-            // Add event listener to new remove button
-            newRow.querySelector('.remove-item').addEventListener('click', function() {
-                if(document.querySelectorAll('#items-container tr').length > 1) {
-                    container.removeChild(newRow);
-                    calculateTotal();
-                }
-            });
-            
-            // Add event listeners to new inputs for auto-calculation
-            const inputs = newRow.querySelectorAll('input');
-            inputs.forEach(input => {
-                if(input.name.includes('qty') || input.name.includes('price')) {
-                    input.addEventListener('input', calculateTotal);
-                }
-            });
-        });
-        
-        // Remove item row
-        document.addEventListener('click', function(e) {
-            if(e.target.classList.contains('remove-item') || e.target.closest('.remove-item')) {
-                const row = e.target.closest('tr');
-                if(document.querySelectorAll('#items-container tr').length > 1) {
-                    row.parentNode.removeChild(row);
-                    calculateTotal();
-                }
-            }
-        });
-        
-        // Calculate totals
-        function calculateTotal() {
-            const rows = document.querySelectorAll('#items-container tr');
-            let grandTotal = 0;
-            
-            rows.forEach(row => {
-                const qty = parseFloat(row.querySelector('input[name="item-qty[]"]').value) || 0;
-                const price = parseFloat(row.querySelector('input[name="item-price[]"]').value) || 0;
-                const total = qty * price;
-                
-                row.querySelector('.item-total').textContent = total.toFixed(2);
-                grandTotal += total;
-            });
-            
-            document.getElementById('grand-total').textContent = grandTotal.toFixed(2);
-        }
-        
-        // Image preview
-        document.getElementById('images').addEventListener('change', function(e) {
-            const preview = document.getElementById('image-preview');
-            preview.innerHTML = '';
-            
-            if (this.files) {
-                Array.from(this.files).forEach(file => {
-                    const reader = new FileReader();
-                    
-                    reader.onload = function(event) {
-                        const img = document.createElement('img');
-                        img.src = event.target.result;
-                        img.style.maxWidth = '150px';
-                        img.style.maxHeight = '150px';
-                        img.style.borderRadius = '5px';
-                        img.style.boxShadow = '0 2px 5px rgba(0,0,0,0.1)';
-                        preview.appendChild(img);
-                    }
-                    
-                    reader.readAsDataURL(file);
-                });
-            }
-        });
-        
-        // PDF Download
-        document.getElementById('download-pdf').addEventListener('click', function() {
-            const element = document.querySelector('.container');
-            const opt = {
-                margin:       0.2,
-                filename:     'price-request.pdf',
-                image:        { type: 'jpeg', quality: 0.98 },
-                html2canvas:  { scale: 2 },
-                jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' },
-                pagebreak:    { mode: ['avoid-all', 'css', 'legacy'] }
-            };
-            html2pdf().set(opt).from(element).save();
+              </tr>
+            </tbody>
+          </table>
+
+          <button type="button" class="btn btn-success" id="add-item">
+            <i class="fas fa-plus"></i>
+          </button>
+
+          <div class="total-container">
+            <div class="total-section">
+              <p>
+                GRAND TOTAL:
+                <span id="grand-total" class="total-amount">0.00</span>
+                <select id="currency" class="currency-select">
+                  <option value="USD">USD ($)</option>
+                  <option value="EGP">EGP (جنيه)</option>
+                </select>
+              </p>
+            </div>
+
+            <div class="stamp-section">
+              <img
+                src="heo-removebg-preview.png"
+                alt="Official Stamp"
+                class="stamp"
+              />
+              <div class="stamp-label">Official Stamp</div>
+            </div>
+          </div>
+
+          <div class="form-group" style="display: flex; gap: 10px">
+            <button
+              type="button"
+              class="btn btn-primary btn-icon"
+              id="download-pdf"
+              title="Download PDF"
+            >
+              <i class="fas fa-file-pdf"></i>
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary btn-icon"
+              id="download-excel"
+              title="Download Excel"
+            >
+              <i class="fas fa-file-excel"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+      <footer>
+        <div class="footer-content">
+          <p>HEKMA ENGINEERING OFFICE - Professional Engineering Solutions</p>
+          <div class="generated-info">
+            Generated on <span id="current-date"></span> | Reference:
+            <span id="reference-display">PR-XXXXXX</span>
+          </div>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://wa.me/201552974437" target="_blank">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.2/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script>
+      // Add current date
+      const now = new Date();
+      document.getElementById("current-date").textContent =
+        now.toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
         });
 
-        // Excel Download
-        document.getElementById('download-excel').addEventListener('click', function() {
-            const table = document.querySelector('.items-table');
-            const wb = XLSX.utils.book_new();
-            const ws_data = [];
-            // Header
-            const headers = Array.from(table.querySelectorAll('thead th')).map(th => th.textContent.trim()).slice(0,5);
-            ws_data.push(headers);
-            // Rows
-            table.querySelectorAll('tbody tr').forEach(row => {
-                const rowData = Array.from(row.querySelectorAll('td')).slice(0,5).map(td => {
-                    const input = td.querySelector('input') || td.querySelector('select');
-                    return input ? input.value : td.textContent.trim();
-                });
-                ws_data.push(rowData);
+      // Set default date to today
+      document.getElementById("date").valueAsDate = now;
+
+      // Generate random reference number if empty
+      function generateReference() {
+        const refInput = document.getElementById("reference");
+        if (!refInput.value) {
+          const randomNum = Math.floor(100000 + Math.random() * 900000);
+          refInput.value = `PR-${randomNum}`;
+          document.getElementById("reference-display").textContent = refInput.value;
+        }
+      }
+
+      // Handle image preview for each row
+      function handleDescImgInput(input) {
+        const preview = input.parentElement.querySelector(".desc-img-preview");
+        preview.innerHTML = "";
+        if (input.files && input.files[0]) {
+          const reader = new FileReader();
+          reader.onload = function (event) {
+            const img = document.createElement("img");
+            img.src = event.target.result;
+            preview.appendChild(img);
+          };
+          reader.readAsDataURL(input.files[0]);
+        }
+      }
+
+      // Attach image preview to all current and future rows
+      function attachImgPreviewEvents(row) {
+        const imgInput = row.querySelector(".desc-img-input");
+        if (imgInput) {
+          imgInput.addEventListener("change", function () {
+            handleDescImgInput(this);
+          });
+        }
+      }
+
+      // Attach duplicate button event
+      function attachDuplicateEvent(row) {
+        const dupBtn = row.querySelector(".duplicate-item");
+        if (dupBtn) {
+          dupBtn.addEventListener("click", function () {
+            const newRow = row.cloneNode(true);
+            // Clear input values except for description
+            newRow.querySelectorAll("input, select").forEach((input) => {
+              if (input.type === "file") {
+                input.value = "";
+                const preview =
+                  input.parentElement.querySelector(".desc-img-preview");
+                if (preview) preview.innerHTML = "";
+              } else if (input.name === "item-desc[]") {
+                // Keep description
+              } else if (input.type === "number") {
+                input.value = input.name.includes("qty") ? "1" : "";
+              } else {
+                input.value = "";
+              }
             });
-            const ws = XLSX.utils.aoa_to_sheet(ws_data);
-            XLSX.utils.book_append_sheet(wb, ws, 'Price Request');
-            XLSX.writeFile(wb, 'price-request.xlsx');
+            // Attach events
+            attachImgPreviewEvents(newRow);
+            attachDuplicateEvent(newRow);
+            // Remove event for remove-item and reattach
+            newRow
+              .querySelector(".remove-item")
+              .addEventListener("click", function () {
+                if (
+                  document.querySelectorAll("#items-container tr").length > 1
+                ) {
+                  newRow.parentNode.removeChild(newRow);
+                  calculateTotal();
+                }
+              });
+            // Add calculation events
+            newRow.querySelectorAll("input").forEach((input) => {
+              if (input.name.includes("qty") || input.name.includes("price")) {
+                input.addEventListener("input", calculateTotal);
+              }
+            });
+            document.getElementById("items-container").appendChild(newRow);
+            calculateTotal();
+          });
+        }
+      }
+
+      // Add item row
+      document
+        .getElementById("add-item")
+        .addEventListener("click", function () {
+          const container = document.getElementById("items-container");
+          const newRow = document.createElement("tr");
+          newRow.innerHTML = `
+          <td><input type="text" name="item-desc[]" required></td>
+          <td>
+            <div class="desc-img-upload">
+              <input type="file" name="item-img[]" accept="image/*" class="desc-img-input">
+              <div class="desc-img-preview"></div>
+            </div>
+          </td>
+          <td><input type="number" name="item-qty[]" min="1" value="1" required></td>
+          <td><input type="number" name="item-price[]" min="0" step="0.01" required></td>
+          <td class="item-total">0.00</td>
+          <td>
+            <select name="item-madein[]" required>
+              <option value="" disabled selected>Select Country</option>
+              <option value="USA">USA</option>
+              <option value="China">China</option>
+              <option value="Germany">Germany</option>
+              <option value="Japan">Japan</option>
+              <option value="UK">UK</option>
+              <option value="France">France</option>
+              <option value="Italy">Italy</option>
+              <option value="India">India</option>
+              <option value="Brazil">Brazil</option>
+              <option value="Canada">Canada</option>
+            </select>
+          </td>
+          <td>
+            <div class="action-buttons">
+              <button type="button" class="btn btn-danger remove-item"><i class="fas fa-trash"></i></button>
+              <button type="button" class="btn btn-primary duplicate-item"><i class="fas fa-copy"></i></button>
+            </div>
+          </td>
+        `;
+          container.appendChild(newRow);
+          // Add event listener to new remove button
+          newRow
+            .querySelector(".remove-item")
+            .addEventListener("click", function () {
+              if (document.querySelectorAll("#items-container tr").length > 1) {
+                container.removeChild(newRow);
+                calculateTotal();
+              }
+            });
+          // Add event listeners to new inputs for auto-calculation
+          const inputs = newRow.querySelectorAll("input");
+          inputs.forEach((input) => {
+            if (input.name.includes("qty") || input.name.includes("price")) {
+              input.addEventListener("input", calculateTotal);
+            }
+          });
+          // Attach image preview and duplicate events
+          attachImgPreviewEvents(newRow);
+          attachDuplicateEvent(newRow);
         });
-        
-        // Initial calculation setup
-        document.querySelectorAll('input[name="item-qty[]"], input[name="item-price[]"]').forEach(input => {
-            input.addEventListener('input', calculateTotal);
+
+      // Remove item row (global)
+      document.addEventListener("click", function (e) {
+        if (
+          e.target.classList.contains("remove-item") ||
+          e.target.closest(".remove-item")
+        ) {
+          const row = e.target.closest("tr");
+          if (document.querySelectorAll("#items-container tr").length > 1) {
+            row.parentNode.removeChild(row);
+            calculateTotal();
+          }
+        }
+      });
+
+      // Attach image preview and duplicate to initial row
+      document.querySelectorAll("#items-container tr").forEach((row) => {
+        attachImgPreviewEvents(row);
+        attachDuplicateEvent(row);
+      });
+
+      // Calculate totals
+      function calculateTotal() {
+        const rows = document.querySelectorAll("#items-container tr");
+        let grandTotal = 0;
+        rows.forEach((row) => {
+          const qty =
+            parseFloat(row.querySelector('input[name="item-qty[]"]').value) ||
+            0;
+          const price =
+            parseFloat(row.querySelector('input[name="item-price[]"]').value) ||
+            0;
+          const total = qty * price;
+          row.querySelector(".item-total").textContent = total.toFixed(2);
+          grandTotal += total;
         });
-        
-        // Form submission
-        document.getElementById('priceRequestForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            generateReference();
-            
-            // Update reference display
-            const reference = document.getElementById('reference').value;
-            document.getElementById('reference-display').textContent = reference;
-            
-            // Here you would typically send the data to a server
-            // For now, we'll just show an alert
-            alert('Price request generated successfully!\n\nIn a real implementation, this would:\n1. Save data to database\n2. Generate PDF\n3. Optionally email to client');
-            
-            // Uncomment to print the form
-            // window.print();
+        const currency = document.getElementById("currency").value;
+        let symbol = currency === "EGP" ? "جنيه" : "$";
+        document.getElementById("grand-total").textContent =
+          grandTotal.toFixed(2) + " " + symbol;
+      }
+
+      document
+        .getElementById("currency")
+        .addEventListener("change", calculateTotal);
+
+      // Excel Download
+      document
+        .getElementById("download-excel")
+        .addEventListener("click", function () {
+          const table = document.querySelector(".items-table");
+          const wb = XLSX.utils.book_new();
+          const ws_data = [];
+          // Header
+          const headers = Array.from(table.querySelectorAll("thead th")).map(
+            (th) => th.textContent.trim()
+          );
+          ws_data.push(headers);
+          // Rows
+          table.querySelectorAll("tbody tr").forEach((row) => {
+            const desc = row.querySelector('input[name="item-desc[]"]').value;
+            const imgInput = row.querySelector('input[name="item-img[]"]');
+            let imgVal = "";
+            if (imgInput && imgInput.files && imgInput.files[0]) {
+              imgVal = imgInput.files[0].name;
+            }
+            const qty = row.querySelector('input[name="item-qty[]"]').value;
+            const price = row.querySelector('input[name="item-price[]"]').value;
+            const total = row.querySelector(".item-total").textContent;
+            const madein = row.querySelector('select[name="item-madein[]"]').value;
+            ws_data.push([desc, imgVal, qty, price, total, madein, ""]);
+          });
+          // Add currency row
+          ws_data.push([
+            "",
+            "",
+            "",
+            "",
+            "Currency:",
+            document.getElementById("currency").value,
+          ]);
+          const ws = XLSX.utils.aoa_to_sheet(ws_data);
+          XLSX.utils.book_append_sheet(wb, ws, "Price Request");
+          XLSX.writeFile(wb, "price-request.xlsx");
         });
-        
-        // Initialize calculations
-        calculateTotal();
-        generateReference();
+
+      // Initialize calculations
+      calculateTotal();
+      generateReference();
+
+      // Load images before generating PDF
+      function loadImagesBeforePDF(container) {
+        const images = container.querySelectorAll("img");
+        const promises = Array.from(images).map((img) => {
+          if (img.complete && img.naturalWidth !== 0) {
+            return Promise.resolve();
+          }
+          return new Promise((resolve) => {
+            img.onload = () => resolve();
+            img.onerror = () => {
+              console.warn(`Failed to load image: ${img.src}`);
+              resolve(); // Continue even if image fails
+            };
+            img.src = img.src; // Trigger reload if necessary
+          });
+        });
+        return Promise.all(promises);
+      }
+
+      // Enhanced PDF Download
+      document
+        .getElementById("download-pdf")
+        .addEventListener("click", function () {
+          // Create a clean version for PDF generation
+          const originalContainer = document.querySelector(".container");
+          const pdfContainer = originalContainer.cloneNode(true);
+
+          // Remove elements that shouldn't appear in PDF, keep item images
+          const elementsToRemove = pdfContainer.querySelectorAll(
+            ".action-buttons, .desc-img-upload input[type='file'], #add-item, .btn-icon"
+          );
+          elementsToRemove.forEach((el) => el.remove());
+
+          // Apply PDF-specific styling
+          pdfContainer.style.background = "white";
+          pdfContainer.style.margin = "0";
+          pdfContainer.style.padding = "15px";
+          pdfContainer.style.maxWidth = "100%";
+          pdfContainer.style.boxShadow = "none";
+          pdfContainer.style.borderRadius = "0";
+          pdfContainer.style.position = "relative";
+
+          // Hide the original and show PDF version
+          originalContainer.style.display = "none";
+          document.body.appendChild(pdfContainer);
+
+          const opt = {
+            margin: [0.5, 0.5, 0.5, 0.5],
+            filename: "price-request.pdf",
+            image: { type: "jpeg", quality: 0.9 },
+            html2canvas: {
+              scale: 2,
+              useCORS: true,
+              allowTaint: true,
+              backgroundColor: "#ffffff",
+              logging: false,
+              letterRendering: true,
+              width: 794,
+              height: 1123,
+              scrollX: 0,
+              scrollY: 0,
+              removeContainer: true,
+            },
+            jsPDF: {
+              unit: "in",
+              format: "a4",
+              orientation: "portrait",
+              compress: true,
+              precision: 16,
+              putOnlyUsedFonts: true,
+            },
+            pagebreak: { mode: ["css", "legacy"] },
+          };
+
+          // Show loading message
+          const loadingMsg = document.createElement("div");
+          loadingMsg.innerHTML =
+            '<div style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.9);color:white;padding:20px;border-radius:10px;z-index:9999;font-size:16px;font-weight:bold;">Generating PDF...</div>';
+          document.body.appendChild(loadingMsg);
+
+          loadImagesBeforePDF(pdfContainer)
+            .then(() => {
+              html2pdf()
+                .set(opt)
+                .from(pdfContainer)
+                .save()
+                .then(() => {
+                  // Clean up
+                  document.body.removeChild(pdfContainer);
+                  originalContainer.style.display = "";
+                  document.body.removeChild(loadingMsg);
+                })
+                .catch((err) => {
+                  console.error("PDF generation error:", err);
+                  document.body.removeChild(pdfContainer);
+                  originalContainer.style.display = "";
+                  document.body.removeChild(loadingMsg);
+                  alert(
+                    "Error generating PDF. Please ensure all images are loaded and try using Google Chrome."
+                  );
+                });
+            })
+            .catch((err) => {
+              console.error("Image loading error:", err);
+              document.body.removeChild(pdfContainer);
+              originalContainer.style.display = "";
+              document.body.removeChild(loadingMsg);
+              alert(
+                "Error loading images for PDF. Please ensure images are accessible and try again."
+              );
+            });
+        });
     </script>
-</body>
+  </body>
 </html>
