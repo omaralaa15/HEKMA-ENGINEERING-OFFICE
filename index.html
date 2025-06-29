@@ -921,7 +921,7 @@
                 <span id="grand-total" class="total-amount">0.00</span>
                 <select id="currency" class="currency-select">
                   <option value="USD">USD ($)</option>
-                  <option value="EGP">EGP (جنيه)</option>
+                  <option value="EGP">EGP </option>
                 </select>
               </p>
             </div>
@@ -1091,6 +1091,7 @@
             <select name="item-madein[]" required>
               <option value="" disabled selected>Select Country</option>
               <option value="USA">USA</option>
+              <option value="Egypt">Egypt</option>
               <option value="China">China</option>
               <option value="Germany">Germany</option>
               <option value="Japan">Japan</option>
@@ -1167,7 +1168,7 @@
           grandTotal += total;
         });
         const currency = document.getElementById("currency").value;
-        let symbol = currency === "EGP" ? "جنيه" : "$";
+        let symbol = currency === "EGP" ? "Pounds" : "$";
         document.getElementById("grand-total").textContent =
           grandTotal.toFixed(2) + " " + symbol;
       }
