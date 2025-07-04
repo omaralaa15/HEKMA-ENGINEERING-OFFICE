@@ -8,6 +8,15 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
+      onerror="alert('Failed to load html2canvas library. Please check your internet connection.')"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"
+      onerror="alert('Failed to load jsPDF library. Please check your internet connection.')"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap");
 
@@ -482,7 +491,7 @@
         animation: fadeIn 0.6s ease-out forwards;
       }
 
-      /* Print styles - Optimized for professional PDF */
+      /* Simplified and reliable Print styles */
       @media print {
         @page {
           margin: 0.5in;
@@ -493,15 +502,13 @@
           -webkit-print-color-adjust: exact !important;
           color-adjust: exact !important;
           print-color-adjust: exact !important;
-          font-family: Arial, Helvetica, sans-serif !important;
-          color: #000 !important;
-          background: white !important;
         }
 
         body {
           background: white !important;
           margin: 0 !important;
           padding: 0 !important;
+          font-family: Arial, sans-serif !important;
           line-height: 1.4 !important;
         }
 
@@ -527,25 +534,21 @@
         .logo-container {
           justify-content: center !important;
           margin: 0 !important;
-          background: white !important;
         }
 
         .logo {
           max-width: 80px !important;
-          filter: none !important;
+          filter: brightness(0) invert(1) !important;
         }
 
         .form-section {
           box-shadow: none !important;
           border-radius: 0 !important;
-          page-break-inside: auto !important;
-          page-break-after: auto !important;
+          page-break-inside: avoid !important;
           margin-bottom: 15px !important;
           padding: 15px !important;
-          border: 1px solid #ccc !important;
+          border: 1px solid #ddd !important;
           background: white !important;
-          position: relative !important;
-          min-height: 100px !important;
         }
 
         .form-section:before {
@@ -559,8 +562,6 @@
           border-bottom: 1px solid #1a5276 !important;
           padding-bottom: 6px !important;
           font-weight: bold !important;
-          text-transform: uppercase !important;
-          letter-spacing: 0.5px !important;
         }
 
         .form-row {
@@ -572,7 +573,6 @@
         .form-group {
           margin-bottom: 8px !important;
           flex: 1 !important;
-          background: white !important;
         }
 
         label {
@@ -580,8 +580,6 @@
           font-size: 0.8rem !important;
           margin-bottom: 3px !important;
           color: #000 !important;
-          text-transform: uppercase !important;
-          letter-spacing: 0.3px !important;
         }
 
         input,
@@ -589,7 +587,7 @@
         textarea {
           padding: 6px 8px !important;
           font-size: 0.85rem !important;
-          border: 1px solid #999 !important;
+          border: 1px solid #ccc !important;
           border-radius: 3px !important;
           width: 100% !important;
           box-sizing: border-box !important;
@@ -603,8 +601,6 @@
           border: 1px solid #1a5276 !important;
           border-collapse: collapse !important;
           width: 100% !important;
-          page-break-inside: auto !important;
-          page-break-after: auto !important;
           background: white !important;
         }
 
@@ -616,30 +612,16 @@
           font-size: 0.75rem !important;
           text-align: left !important;
           border: 1px solid #1a5276 !important;
-          text-transform: uppercase !important;
-          letter-spacing: 0.3px !important;
         }
 
         .items-table td {
           padding: 6px !important;
-          border: 1px solid #ccc !important;
+          border: 1px solid #ddd !important;
           vertical-align: middle !important;
-          background: white !important;
-        }
-
-        .items-table td:first-child {
-          max-width: 200px !important;
-          white-space: normal !important;
-          word-wrap: break-word !important;
         }
 
         .items-table tr:nth-child(even) {
           background-color: #f8f9fa !important;
-        }
-
-        .items-table tr {
-          page-break-inside: avoid !important;
-          page-break-after: auto !important;
         }
 
         .total-container {
@@ -649,7 +631,6 @@
           display: flex !important;
           justify-content: space-between !important;
           align-items: center !important;
-          background: white !important;
         }
 
         .total-section {
@@ -672,12 +653,10 @@
         .stamp-section {
           min-width: 100px !important;
           text-align: center !important;
-          background: white !important;
         }
 
         .stamp {
           max-width: 80px !important;
-          filter: none !important;
         }
 
         .stamp-label {
@@ -688,7 +667,7 @@
         }
 
         .currency-select {
-          border: 1px solid #999 !important;
+          border: 1px solid #ccc !important;
           padding: 3px 6px !important;
           font-size: 0.85rem !important;
           border-radius: 3px !important;
@@ -707,7 +686,6 @@
 
         .footer-content {
           text-align: center !important;
-          background: #343a40 !important;
         }
 
         .generated-info {
@@ -748,6 +726,19 @@
           height: auto !important;
           display: block !important;
         }
+
+        /* Ensure image previews show in PDF */
+        .desc-img-preview {
+          display: block !important;
+          margin-top: 5px !important;
+        }
+
+        .desc-img-preview img {
+          max-width: 50px !important;
+          max-height: 50px !important;
+          border-radius: 3px !important;
+          border: 1px solid #ddd !important;
+        }
       }
 
       .btn-icon {
@@ -772,6 +763,133 @@
         border-radius: 6px;
         border: 1px solid #ddd;
         font-size: 1rem;
+      }
+
+      /* PDF-specific styles */
+      #pdf-content {
+        background: white;
+        padding: 24px;
+        font-family: "Tajawal", sans-serif;
+        direction: ltr;
+        text-align: left;
+        max-width: 900px;
+        margin: 0 auto;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      .pdf-header {
+        text-align: center;
+        margin-bottom: 20px;
+        border-bottom: 2px solid #1a5276;
+        padding-bottom: 12px;
+      }
+      .pdf-title {
+        font-size: 24px;
+        font-weight: bold;
+        color: #1a5276;
+        margin-bottom: 8px;
+      }
+      .pdf-subtitle {
+        font-size: 16px;
+        color: #666;
+      }
+      .pdf-info-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin-bottom: 20px;
+      }
+      .pdf-info-box {
+        background: #f8f9fa;
+        padding: 12px;
+        border-radius: 6px;
+        border-left: 3px solid #1a5276;
+      }
+      .pdf-info-title {
+        font-weight: bold;
+        color: #1a5276;
+        margin-bottom: 8px;
+        font-size: 14px;
+      }
+      .pdf-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 16px;
+        font-size: 10px;
+      }
+      .pdf-table th {
+        background: #1a5276;
+        color: white;
+        padding: 8px;
+        text-align: left;
+        font-weight: bold;
+      }
+      .pdf-table td {
+        padding: 6px;
+        border-bottom: 1px solid #ddd;
+        text-align: left;
+      }
+      .pdf-table td:first-child {
+        text-align: left;
+        font-weight: bold;
+      }
+      .pdf-total {
+        background: #e8f4f8;
+        padding: 16px;
+        border-radius: 6px;
+        text-align: left;
+        margin-top: 16px;
+      }
+      .pdf-total-row {
+        margin-bottom: 8px;
+        font-size: 14px;
+      }
+      .pdf-final-total {
+        font-size: 18px;
+        font-weight: bold;
+        color: #1a5276;
+        border-top: 2px solid #1a5276;
+        padding-top: 12px;
+        margin-top: 12px;
+      }
+      .pdf-footer {
+        text-align: center;
+        font-size: 8px;
+        color: #666;
+        margin-top: 20px;
+        padding-top: 16px;
+        border-top: 1px solid #ddd;
+      }
+      @media (min-width: 640px) {
+        .pdf-info-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .pdf-table {
+          font-size: 12px;
+        }
+        .pdf-total-row {
+          font-size: 16px;
+        }
+        .pdf-final-total {
+          font-size: 20px;
+        }
+        .pdf-footer {
+          font-size: 10px;
+        }
+      }
+      @media (max-width: 639px) {
+        .pdf-table {
+          font-size: 9px;
+          overflow-x: auto;
+          display: block;
+        }
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      #pdfSpinner:not(.hidden) {
+        animation: spin 1s linear infinite;
       }
     </style>
   </head>
@@ -922,7 +1040,7 @@
                 <span id="grand-total" class="total-amount">0.00</span>
                 <select id="currency" class="currency-select">
                   <option value="USD">USD ($)</option>
-                  <option value="EGP">EGP </option>
+                  <option value="EGP">EGP</option>
                 </select>
               </p>
             </div>
@@ -944,7 +1062,18 @@
               id="download-pdf"
               title="Download PDF"
             >
-              <i class="fas fa-file-pdf"></i>
+              <svg
+                id="pdfSpinner"
+                class="w-5 h-5 inline-block ml-2 hidden"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+              </svg>
+              <span id="pdfBtnText">Download PDF</span>
             </button>
             <button
               type="button"
@@ -957,6 +1086,10 @@
           </div>
         </div>
       </form>
+      <div
+        id="pdf-content"
+        style="display: none; position: absolute; left: -9999px; top: -9999px"
+      ></div>
       <footer>
         <div class="footer-content">
           <p>HEKMA ENGINEERING OFFICE - Professional Engineering Solutions</p>
@@ -974,9 +1107,23 @@
         </div>
       </footer>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.2/html2pdf.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <script>
+      // Check if required libraries are loaded
+      window.jspdf = window.jspdf || null;
+      window.html2canvas = window.html2canvas || null;
+
+      function checkLibraries() {
+        if (!window.jspdf) {
+          console.error("jsPDF library not loaded");
+          return false;
+        }
+        if (!window.html2canvas) {
+          console.error("html2canvas library not loaded");
+          return false;
+        }
+        return true;
+      }
+
       // Add current date
       const now = new Date();
       document.getElementById("current-date").textContent =
@@ -994,8 +1141,9 @@
         const refInput = document.getElementById("reference");
         if (!refInput.value) {
           const randomNum = Math.floor(100000 + Math.random() * 900000);
-          refInput.value = `PR-${randomNum}`;
-          document.getElementById("reference-display").textContent = refInput.value;
+          refInput.value = PR-${randomNum};
+          document.getElementById("reference-display").textContent =
+            refInput.value;
         }
       }
 
@@ -1201,7 +1349,9 @@
             const qty = row.querySelector('input[name="item-qty[]"]').value;
             const price = row.querySelector('input[name="item-price[]"]').value;
             const total = row.querySelector(".item-total").textContent;
-            const madein = row.querySelector('select[name="item-madein[]"]').value;
+            const madein = row.querySelector(
+              'select[name="item-madein[]"]'
+            ).value;
             ws_data.push([desc, imgVal, qty, price, total, madein, ""]);
           });
           // Add currency row
@@ -1218,122 +1368,226 @@
           XLSX.writeFile(wb, "price-request.xlsx");
         });
 
-      // Initialize calculations
-      calculateTotal();
-      generateReference();
+      // PDF Generation
+      function createPdfContent(data) {
+        const pdfContent = document.getElementById("pdf-content");
+        const createTableHTML = (items) => `
+          <div style="margin-bottom: 16px; direction: ltr;">
+            <h3 style="text-align: left; color: #1a5276; font-size: 16px; margin-bottom: 12px; border-bottom: 2px solid #1a5276; padding-bottom: 8px;">Price Request Items</h3>
+            <table class="pdf-table" style="width: 100%; border-collapse: collapse;">
+              <thead>
+                <tr>
+                  <th style="text-align: left;">Description</th>
+                  <th style="text-align: left;">Image</th>
+                  <th style="text-align: left;">Quantity</th>
+                  <th style="text-align: left;">Unit Price</th>
+                  <th style="text-align: left;">Total</th>
+                  <th style="text-align: left;">Made In</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${items
+                  .map(
+                    (item) => `
+                  <tr>
+                    <td style="text-align: left;">${item.description}</td>
+                    <td style="text-align: left;">
+                      ${
+                        item.imageSrc
+                          ? <img src="${item.imageSrc}" style="max-width: 50px; max-height: 50px; border-radius: 3px; border: 1px solid #ddd;" />
+                          : "N/A"
+                      }
+                    </td>
+                    <td style="text-align: left;">${item.quantity}</td>
+                    <td style="text-align: left;">${item.unitPrice}</td>
+                    <td style="text-align: left;">${item.total}</td>
+                    <td style="text-align: left;">${item.madeIn}</td>
+                  </tr>`
+                  )
+                  .join("")}
+              </tbody>
+              <tfoot>
+                <tr style="background: #f0f0f0; font-weight: bold;">
+                  <td colspan="4" style="text-align: left;">Grand Total</td>
+                  <td style="text-align: left;">${data.grandTotal}</td>
+                  <td style="text-align: left;"></td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>`;
 
-      // Load images before generating PDF
-      function loadImagesBeforePDF(container) {
-        const images = container.querySelectorAll("img");
-        const promises = Array.from(images).map((img) => {
-          if (img.complete && img.naturalWidth !== 0) {
-            return Promise.resolve();
-          }
-          return new Promise((resolve) => {
-            img.onload = () => resolve();
-            img.onerror = () => {
-              console.warn(`Failed to load image: ${img.src}`);
-              resolve(); // Continue even if image fails
-            };
-            img.src = img.src; // Trigger reload if necessary
-          });
-        });
-        return Promise.all(promises);
+        pdfContent.innerHTML = `
+          <div class="pdf-header" style="direction: ltr; text-align: center;">
+            <div class="pdf-title" style="font-size: 20px; font-weight: bold;">HEKMA ENGINEERING OFFICE</div>
+            <div class="pdf-subtitle" style="font-size: 16px; margin-top: 4px;">Price Request</div>
+            <div style="font-size: 10px; color: #666; margin-top: 8px;">
+              Reference: ${data.reference} | Date: ${new Date().toLocaleDateString("en-US")}
+            </div>
+          </div>
+          <div class="pdf-info-grid" style="display: flex; gap: 20px; margin-top: 16px; direction: ltr;">
+            <div class="pdf-info-box" style="flex: 1;">
+              <div class="pdf-info-title" style="font-weight: bold; margin-bottom: 8px;">Client Information</div>
+              <div>Company: ${data.company}</div>
+              <div>Name: ${data.clientName}</div>
+              <div>Address: ${data.address}</div>
+              <div>Phone: ${data.phone}</div>
+              <div>Email: ${data.email}</div>
+              <div>Date: ${data.date}</div>
+              <div>Reference: ${data.reference}</div>
+            </div>
+          </div>
+          ${createTableHTML(data.items)}
+          <div class="pdf-total" style="margin-top: 24px; direction: ltr; text-align: left;">
+            <div class="pdf-final-total" style="margin-top: 10px; font-size: 16px;">
+              Grand Total: <strong>${data.grandTotal}</strong>
+            </div>
+          </div>
+          <div class="pdf-footer" style="margin-top: 24px; font-size: 13px; color: #333; direction: ltr; text-align: center;">
+            HEKMA ENGINEERING OFFICE - Professional Engineering Solutions
+          </div>`;
       }
 
-      // Enhanced PDF Download
       document
         .getElementById("download-pdf")
         .addEventListener("click", function () {
-          // Create a clean version for PDF generation
-          const originalContainer = document.querySelector(".container");
-          const pdfContainer = originalContainer.cloneNode(true);
+          if (!checkLibraries()) {
+            alert("Required libraries are not available. Please reload the page.");
+            return;
+          }
 
-          // Remove elements that shouldn't appear in PDF, keep item images
-          const elementsToRemove = pdfContainer.querySelectorAll(
-            ".action-buttons, .desc-img-upload input[type='file'], #add-item, .btn-icon"
-          );
-          elementsToRemove.forEach((el) => el.remove());
+          const pdfBtn = document.getElementById("download-pdf");
+          const pdfBtnText = document.getElementById("pdfBtnText");
+          const pdfSpinner = document.getElementById("pdfSpinner");
 
-          // Apply PDF-specific styling
-          pdfContainer.style.background = "white";
-          pdfContainer.style.margin = "0";
-          pdfContainer.style.padding = "15px";
-          pdfContainer.style.maxWidth = "100%";
-          pdfContainer.style.boxShadow = "none";
-          pdfContainer.style.borderRadius = "0";
-          pdfContainer.style.position = "relative";
+          pdfBtn.disabled = true;
+          pdfBtnText.textContent = "Generating...";
+          pdfSpinner.classList.remove("hidden");
 
-          // Hide the original and show PDF version
-          originalContainer.style.display = "none";
-          document.body.appendChild(pdfContainer);
+          try {
+            // Collect form data
+            const company = document.getElementById("company").value;
+            const clientName = document.getElementById("client-name").value;
+            const address = document.getElementById("address").value;
+            const phone = document.getElementById("phone").value;
+            const email = document.getElementById("email").value;
+            const date = document.getElementById("date").value;
+            const reference = document.getElementById("reference").value;
+            const currency = document.getElementById("currency").value;
+            const grandTotal = document.getElementById("grand-total").textContent;
 
-          const opt = {
-            margin: [0.5, 0.5, 0.5, 0.5],
-            filename: "price-request.pdf",
-            image: { type: "jpeg", quality: 0.9 },
-            html2canvas: {
+            const items = [];
+            document.querySelectorAll("#items-container tr").forEach((row) => {
+              const desc = row.querySelector('input[name="item-desc[]"]').value;
+              const imgInput = row.querySelector('input[name="item-img[]"]');
+              let imageSrc = "";
+              if (imgInput && imgInput.files && imgInput.files[0]) {
+                const preview = row.querySelector(".desc-img-preview img");
+                if (preview) imageSrc = preview.src;
+              }
+              const qty = row.querySelector('input[name="item-qty[]"]').value;
+              const price = row.querySelector('input[name="item-price[]"]').value;
+              const total = row.querySelector(".item-total").textContent;
+              const madeIn = row.querySelector('select[name="item-madein[]"]').value;
+              items.push({
+                description: desc,
+                imageSrc,
+                quantity: qty,
+                unitPrice: price,
+                total,
+                madeIn,
+              });
+            });
+
+            const data = {
+              company,
+              clientName,
+              address,
+              phone,
+              email,
+              date,
+              reference,
+              grandTotal,
+              items,
+            };
+
+            createPdfContent(data);
+
+            const pdfContent = document.getElementById("pdf-content");
+            pdfContent.style.display = "block";
+            pdfContent.style.position = "relative";
+            pdfContent.style.left = "0";
+            pdfContent.style.top = "0";
+
+            html2canvas(pdfContent, {
               scale: 2,
               useCORS: true,
-              allowTaint: true,
               backgroundColor: "#ffffff",
-              logging: false,
-              letterRendering: true,
-              width: 794,
-              height: 1123,
-              scrollX: 0,
-              scrollY: 0,
-              removeContainer: true,
-            },
-            jsPDF: {
-              unit: "in",
-              format: "a4",
-              orientation: "portrait",
-              compress: true,
-              precision: 16,
-              putOnlyUsedFonts: true,
-            },
-            pagebreak: { mode: ["css", "legacy"] },
-          };
-
-          // Show loading message
-          const loadingMsg = document.createElement("div");
-          loadingMsg.innerHTML =
-            '<div style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.9);color:white;padding:20px;border-radius:10px;z-index:9999;font-size:16px;font-weight:bold;">Generating PDF...</div>';
-          document.body.appendChild(loadingMsg);
-
-          loadImagesBeforePDF(pdfContainer)
-            .then(() => {
-              html2pdf()
-                .set(opt)
-                .from(pdfContainer)
-                .save()
-                .then(() => {
-                  // Clean up
-                  document.body.removeChild(pdfContainer);
-                  originalContainer.style.display = "";
-                  document.body.removeChild(loadingMsg);
-                })
-                .catch((err) => {
-                  console.error("PDF generation error:", err);
-                  document.body.removeChild(pdfContainer);
-                  originalContainer.style.display = "";
-                  document.body.removeChild(loadingMsg);
-                  alert(
-                    "Error generating PDF. Please ensure all images are loaded and try using Google Chrome."
-                  );
-                });
+              width: pdfContent.offsetWidth,
+              height: pdfContent.offsetHeight,
+              onclone: (clonedDoc) => {
+                const clonedElement = clonedDoc.getElementById("pdf-content");
+                if (clonedElement) {
+                  clonedElement.style.direction = "ltr";
+                  clonedElement.style.fontFamily = "'Tajawal', sans-serif";
+                  clonedElement.style.textAlign = "left";
+                }
+              },
             })
-            .catch((err) => {
-              console.error("Image loading error:", err);
-              document.body.removeChild(pdfContainer);
-              originalContainer.style.display = "";
-              document.body.removeChild(loadingMsg);
-              alert(
-                "Error loading images for PDF. Please ensure images are accessible and try again."
-              );
-            });
+              .then((canvas) => {
+                pdfContent.style.display = "none";
+                pdfContent.style.position = "absolute";
+                pdfContent.style.left = "-9999px";
+                pdfContent.style.top = "-9999px";
+
+                const { jsPDF } = window.jspdf;
+                const imgData = canvas.toDataURL("image/png");
+                const imgWidth = 210; // A4 width in mm
+                const pageHeight = 295; // A4 height in mm
+                const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+                const doc = new jsPDF("p", "mm", "a4");
+                doc.setProperties({
+                  title: Price Request - ${clientName},
+                  subject: "Price Request Document",
+                  author: "HEKMA ENGINEERING OFFICE",
+                  creator: "Price Request Form",
+                });
+
+                let heightLeft = imgHeight;
+                let position = 0;
+                doc.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
+                heightLeft -= pageHeight;
+
+                while (heightLeft >= 0) {
+                  position = heightLeft - imgHeight;
+                  doc.addPage();
+                  doc.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
+                  heightLeft -= pageHeight;
+                }
+
+                doc.save(Price-Request-${clientName}.pdf);
+              })
+              .catch((error) => {
+                console.error("Canvas generation error:", error);
+                alert("Failed to generate PDF. Please try again.");
+              })
+              .finally(() => {
+                pdfBtn.disabled = false;
+                pdfBtnText.textContent = "Download PDF";
+                pdfSpinner.classList.add("hidden");
+              });
+          } catch (error) {
+            console.error("PDF Generation Error:", error);
+            alert(Failed to generate PDF: ${error.message});
+            pdfBtn.disabled = false;
+            pdfBtnText.textContent = "Download PDF";
+            pdfSpinner.classList.add("hidden");
+          }
         });
+
+      // Initialize calculations
+      calculateTotal();
+      generateReference();
     </script>
   </body>
 </html>
